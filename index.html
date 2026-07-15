@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是阿瓦隆里的谁？——阿瓦隆博弈戏精指数测试</title>
+    <meta name="description" content="通过25个极其扎心的阿瓦隆高压对局场景，测出你在隐瞒、伪装、甩锅和推理时的微观演技，抓出你的博弈真面目！">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stars-container"></div>
+
+    <main class="app-container">
+        <!-- 1. Welcome Screen -->
+        <section id="welcome-screen" class="screen active fade-in">
+            <header class="welcome-header">
+                <div class="crest-container">
+                    <img src="images/avalon.png" alt="Avalon Logo" class="header-logo" id="welcome-logo-img" onload="this.style.display='block'; document.getElementById('welcome-shield-svg').style.display='none';" onerror="this.style.display='none'; document.getElementById('welcome-shield-svg').style.display='block';">
+                    <!-- Elegant SVG Shield/Crest fallback -->
+                    <svg id="welcome-shield-svg" viewBox="0 0 100 120" class="shield-crest">
+                        <path d="M50 10 L85 25 V60 C85 85 50 110 50 110 C50 110 15 85 15 60 V25 Z" fill="none"
+                            stroke="currentColor" stroke-width="2.5" />
+                        <path d="M50 20 L78 32 V60 C78 79 50 98 50 98 C50 98 22 79 22 60 V32 Z" fill="none"
+                            stroke="currentColor" stroke-width="1" opacity="0.6" />
+                        <path d="M50 15 V105" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-dasharray="2 2" />
+                        <path d="M20 55 H80" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-dasharray="2 2" />
+                        <circle cx="50" cy="55" r="8" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </div>
+                <h1>你是阿瓦隆里的谁？</h1>
+                <p class="subtitle">25题灵魂拷问，测测你在桌游桌上的“戏精”本色</p>
+            </header>
+
+            <div class="card intro-card">
+                <p class="intro-text">
+                    在《阿瓦隆》的高压修罗场中，人性的展现从来不是非黑即白。本测试精选了25个真实的阿瓦隆对局场景，精准捕捉你在被泼脏水、被迫撒谎、盲目信任和直觉爆发时的真实本色。
+                </p>
+
+                <p class="instruction-note">
+                    请根据你在真实阿瓦隆对局（或社交推理桌游）中的第一反应进行滑动打分。<br>
+                    <strong>0分</strong> 代表完全不符合，<strong>5分</strong> 代表中立，<strong>10分</strong> 代表完全符合。
+                </p>
+                <button id="start-btn" class="btn btn-primary">
+                    <span>开始测试</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="progress-bar-container">
+                <div class="progress-info">
+                    <span id="question-index">01 / 25</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-fill" style="width: 5%;"></div>
+                </div>
+            </div>
+
+            <div class="quiz-card-wrapper">
+                <div id="quiz-card" class="card quiz-card">
+                    <div class="question-container">
+                        <div id="question-text" class="question-text">加载中...</div>
+                    </div>
+
+                    <div class="options-interactive-area">
+                        <div class="options-container" id="options-container">
+                            <button class="option-btn" data-value="0">
+                                <span class="option-circle size-lg color-disagree"></span>
+                                <span class="option-label">完全不符</span>
+                            </button>
+                            <button class="option-btn" data-value="2.5">
+                                <span class="option-circle size-md color-disagree"></span>
+                                <span class="option-label">较不符合</span>
+                            </button>
+                            <button class="option-btn" data-value="5">
+                                <span class="option-circle size-sm color-neutral"></span>
+                                <span class="option-label">中立/一般</span>
+                            </button>
+                            <button class="option-btn" data-value="7.5">
+                                <span class="option-circle size-md color-agree"></span>
+                                <span class="option-label">较符合</span>
+                            </button>
+                            <button class="option-btn" data-value="10">
+                                <span class="option-circle size-lg color-agree"></span>
+                                <span class="option-label">完全符合</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-navigation">
+                <button id="prev-btn" class="btn btn-secondary" disabled>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>上一题</span>
+                </button>
+                <button id="next-btn" class="btn btn-primary">
+                    <span>下一题</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. Loading Screen -->
+        <section id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="loading-spinner">
+                    <svg viewBox="0 0 100 100" class="spinner-svg">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(243, 229, 171, 0.1)" stroke-width="4">
+                        </circle>
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="4"
+                            stroke-dasharray="280" stroke-dashoffset="180" class="spinner-dash"></circle>
+                    </svg>
+                    <div class="spinner-center-icon">🔮</div>
+                </div>
+                <h3>正在解析你的性格五维光谱...</h3>
+                <p class="loading-sub">正在与圆桌骑士及邪恶势力建立神经共鸣...</p>
+            </div>
+        </section>
+
+        <!-- 4. Results Screen -->
+        <section id="results-screen" class="screen">
+            <header class="result-header">
+                <h2>测试结果</h2>
+                <p class="subtitle">根据你的博弈反应，匹配的阿瓦隆原型角色是：</p>
+            </header>
+
+            <div class="results-layout">
+                <!-- Left: Character Main Profile & Image -->
+                <div class="result-col-left">
+                    <div class="card character-card">
+                        <div id="camp-banner" class="camp-banner evil">
+                            <span id="camp-text">邪恶阵营</span>
+                        </div>
+
+                        <!-- Image Area -->
+                        <div class="character-image-container">
+                            <img id="character-img" class="character-img" src="" alt="角色插画" onload="this.style.display='block'; document.getElementById('character-placeholder-art').style.display='none';" onerror="this.style.display='none'; document.getElementById('character-placeholder-art').style.display='flex';">
+                            <div id="character-placeholder-art" class="image-placeholder-art">
+                                <div class="art-bg-pattern"></div>
+                                <svg viewBox="0 0 100 100" class="art-svg-placeholder">
+                                    <!-- A stylized portrait outline -->
+                                    <path
+                                        d="M50 15 C35 15 25 25 25 40 C25 55 35 60 38 75 C40 80 43 85 43 90 H57 C57 90 60 85 62 75 C65 60 75 55 75 40 C75 25 65 15 50 15 Z"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M30 40 Q50 30 70 40" fill="none" stroke="currentColor" stroke-width="1" />
+                                    <path d="M50 45 L50 65" fill="none" stroke="currentColor" stroke-dasharray="3 3" />
+                                    <circle cx="50" cy="40" r="3" fill="currentColor" />
+                                </svg>
+                                <span class="placeholder-text-label">角色插画占位符</span>
+                            </div>
+                        </div>
+
+                        <div class="character-title-wrapper">
+                            <h1 id="character-name" class="character-name">莫甘娜</h1>
+                            <p id="character-title" class="character-title">深渊的微操大师</p>
+                        </div>
+
+                        <p id="character-desc" class="character-desc">
+                            你是天生的“谎言艺术家”。你能用真假参半的逻辑建立信任帝国，再亲手将其摧毁。你的心脏是一台冰冷的机器，能在高压下完美运作。
+                        </p>
+                    </div>
+
+                    <!-- Playstyle Advice Card -->
+                    <div class="card advice-card">
+                        <h3>【高阶建议】胜率提升指南</h3>
+                        <p id="character-advice" class="advice-text"></p>
+                    </div>
+                </div>
+
+                <!-- Right: Radar Chart & Personality Breakdown -->
+                <div class="result-col-right">
+                    <!-- Radar Chart Card -->
+                    <div class="card chart-card">
+                        <h3>博弈人格雷达图</h3>
+                        <div class="radar-chart-container">
+                            <!-- Radar SVG will be injected here dynamically by JavaScript -->
+                            <div id="radar-chart-target"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dimension Progress Cards -->
+                    <div class="card breakdown-card">
+                        <h3>博弈人格维度剖析</h3>
+                        <div id="dimensions-list" class="dimensions-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Compatibility Card -->
+                    <div class="card compat-card">
+                        <h3>角色契合度排名</h3>
+                        <div id="compat-list" class="compat-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="result-actions">
+                <button id="share-btn" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                    <span>分享结果</span>
+                </button>
+                <button id="restart-btn" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M23 4v6h-6"></path>
+                        <path d="M1 20v-6h6"></path>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    <span>重新测试</span>
+                </button>
+            </div>
+
+            <!-- App Store Promo Card -->
+            <div class="card promo-card">
+                <div class="promo-content">
+                    <span class="promo-badge">博弈神助攻</span>
+                    <div class="promo-info">
+                        <h4>阿瓦隆法官怕漏流程？试试【桌游声音助手】App</h4>
+                        <p>官方中文沉浸式语音法官！内置阿瓦隆全角色配音、背景音效、智能发言计时器。从此圆桌对局再也不怕念错台词或漏闭眼流程，助你完美主持整场对局！</p>
+                    </div>
+                </div>
+                <a href="https://apps.apple.com/app/board-game-audio-assistant/id6755318411" target="_blank" class="btn btn-primary promo-btn">
+                    <span>前往 App Store 免费下载</span>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Toast notification for copy action -->
+            <div id="toast" class="toast">结果已复制到剪贴板！</div>
+        </section>
+    </main>
+
+    <!-- 5. Share Poster Template (Rendered Off-Screen) -->
+    <div id="share-poster-template" class="share-poster">
+        <div class="poster-header">
+            <div class="poster-crest-container">
+                <img src="images/avalon.png" alt="Avalon Logo" class="header-logo" id="poster-logo-img" onload="this.style.display='block'; document.getElementById('poster-shield-svg').style.display='none';" onerror="this.style.display='none'; document.getElementById('poster-shield-svg').style.display='block';">
+                <svg id="poster-shield-svg" viewBox="0 0 100 120" class="shield-crest">
+                    <path d="M50 10 L85 25 V60 C85 85 50 110 50 110 C50 110 15 85 15 60 V25 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
+                    <circle cx="50" cy="55" r="8" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </div>
+            <h2>阿瓦隆博弈戏精指数测试</h2>
+            <p class="poster-tagline">—— 测测你在社交推理中的博弈原型 ——</p>
+        </div>
+        
+        <div class="poster-main-card">
+            <div id="poster-camp-banner" class="camp-banner evil">
+                <span id="poster-camp-text">邪恶阵营</span>
+            </div>
+            <div class="poster-character-image-container">
+                <img id="poster-character-img" class="character-img" src="" alt="角色插画" onload="this.style.display='block';" onerror="this.style.display='none';">
+            </div>
+            <h1 id="poster-character-name" class="character-name">莫甘娜</h1>
+            <p id="poster-character-title" class="character-title">深渊的微操大师</p>
+            <p id="poster-character-desc" class="character-desc">
+                你是天生的“谎言艺术家”...
+            </p>
+        </div>
+
+        <div class="poster-advice-block">
+            <h4>胜率提升指南</h4>
+            <p id="poster-character-advice" class="poster-advice-text"></p>
+        </div>
+
+        <div class="poster-charts-row">
+            <div class="poster-radar-container">
+                <div id="poster-radar-chart-target"></div>
+            </div>
+        </div>
+
+        <div class="poster-footer">
+            <div class="footer-qr-container">
+                <svg viewBox="0 0 100 100" class="mock-qr-svg">
+                    <rect x="10" y="10" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2" />
+                    <rect x="15" y="15" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" />
+                    <rect x="20" y="20" width="10" height="10" fill="currentColor" />
+                    <rect x="65" y="15" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" />
+                    <rect x="70" y="20" width="10" height="10" fill="currentColor" />
+                    <rect x="15" y="65" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" />
+                    <rect x="20" y="70" width="10" height="10" fill="currentColor" />
+                    <path d="M50 35 L62 43 V60 C62 70 50 80 50 80 C50 80 38 70 38 60 V43 Z" fill="none" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="50" cy="55" r="4" fill="currentColor" />
+                    <rect x="42" y="18" width="5" height="5" fill="currentColor" />
+                    <rect x="52" y="18" width="5" height="5" fill="currentColor" />
+                    <rect x="42" y="26" width="5" height="5" fill="currentColor" />
+                    <rect x="52" y="26" width="5" height="5" fill="currentColor" />
+                    <rect x="68" y="42" width="5" height="5" fill="currentColor" />
+                    <rect x="68" y="52" width="5" height="5" fill="currentColor" />
+                    <rect x="18" y="42" width="5" height="5" fill="currentColor" />
+                    <rect x="26" y="50" width="5" height="5" fill="currentColor" />
+                    <rect x="76" y="68" width="5" height="5" fill="currentColor" />
+                    <rect x="68" y="76" width="5" height="5" fill="currentColor" />
+                </svg>
+            </div>
+            <div class="footer-text">
+                <p class="scan-tip">长按扫码测试你的博弈原型</p>
+                <p class="test-url">https://avalon-personality.netlify.app</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Share Result Modal -->
+    <div id="share-modal" class="share-modal-overlay">
+        <div class="share-modal-content">
+            <header class="share-modal-header">
+                <h3>保存并分享你的博弈人格</h3>
+                <button id="close-share-btn" class="close-modal-btn">&times;</button>
+            </header>
+            <div class="share-modal-body">
+                <div class="poster-preview-container">
+                    <img id="share-poster-img" src="" alt="分享海报生成中...">
+                    <div id="poster-loading-spinner" class="spinner-overlay">
+                        <div class="small-spinner"></div>
+                        <p>正在炼制海报...</p>
+                    </div>
+                </div>
+                <p class="share-instructions">手机端请长按图片保存到相册，电脑端可直接点击下方下载按钮。</p>
+            </div>
+            <footer class="share-modal-footer">
+                <button id="download-poster-btn" class="btn btn-primary">下载海报</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- JS Application Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
