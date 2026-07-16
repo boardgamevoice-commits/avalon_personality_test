@@ -1314,21 +1314,72 @@ h3 {
     color: var(--text-muted);
     margin: 0;
 }
-
-.poster-app-promo {
-    font-size: 0.62rem;
-    color: var(--color-gold);
-    margin: 4px 0 0 0;
-    opacity: 0.85;
+.poster-app-promo-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 5px;
 }
 
-.share-poster.good-theme .poster-app-promo {
+.promo-banner-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex-grow: 1;
+}
+
+.promo-badge {
+    background: var(--color-gold);
+    color: #0c0f1a;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.promo-text {
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.promo-qr-container {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    color: var(--color-gold);
+}
+
+.app-qr-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.share-poster.good-theme .promo-badge {
+    background: var(--color-good);
+}
+
+.share-poster.good-theme .promo-qr-container {
     color: var(--color-good);
 }
 
-.share-poster.evil-theme .poster-app-promo {
+.share-poster.evil-theme .promo-badge {
+    background: var(--color-evil);
+}
+
+.share-poster.evil-theme .promo-qr-container {
     color: var(--color-evil);
 }
+
 
 @keyframes spin {
     to { transform: rotate(360deg); }
