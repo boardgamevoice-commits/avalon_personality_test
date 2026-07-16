@@ -1315,6 +1315,21 @@ h3 {
     margin: 0;
 }
 
+.poster-app-promo {
+    font-size: 0.62rem;
+    color: var(--color-gold);
+    margin: 4px 0 0 0;
+    opacity: 0.85;
+}
+
+.share-poster.good-theme .poster-app-promo {
+    color: var(--color-good);
+}
+
+.share-poster.evil-theme .poster-app-promo {
+    color: var(--color-evil);
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
