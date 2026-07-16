@@ -25,156 +25,98 @@ const QUESTIONS = [
         id: 3,
         dimension: 'N',
         dimName: '红脸急眼指数',
-        text: '如果一个你一直力保的好人，反过来投票拒绝了你的车队并怀疑你，你会感到强烈的愤怒，甚至有些想放弃这局游戏。'
-    },
-    {
-        id: 4,
-        dimension: 'N',
-        dimName: '红脸急眼指数',
-        text: '游戏结束后，如果刚才经历了激烈的争论或被信任的人背叛，你需要较长的时间来平复心情，很难立刻笑呵呵地开启下一局。'
-    },
-    {
-        id: 5,
-        dimension: 'N',
-        dimName: '红脸急眼指数',
         text: '当看到“湖中仙女（验人）”标记指向你，或者你需要当众宣布某个玩家的真实身份时，你会感到手心出汗、心跳加速，非常担心自己的表情管理出卖了阵营。'
     },
     // Dimension 2: Extraversion (E) - 麦霸控场欲望
     {
-        id: 6,
+        id: 4,
         dimension: 'E',
         dimName: '麦霸控场欲望',
         text: '游戏第一轮发车（第一天），你总是倾向于主动跳出来分析局势，甚至故意给出有争议的派票方案来观察全场反应。'
     },
     {
-        id: 7,
-        dimension: 'E',
-        dimName: '麦霸控场欲望',
-        text: '如果你发现了一个致命的逻辑漏洞，你会立刻拍桌指出，用强势的语气带领好人冲锋，享受全场目光聚焦的时刻。'
-    },
-    {
-        id: 8,
+        id: 5,
         dimension: 'E',
         dimName: '麦霸控场欲望',
         text: '在混乱的争吵中，当别人试图打断你的发言时，你会毫不犹豫地提高音量把话语权抢回来，绝不退缩。'
     },
     {
-        id: 9,
-        dimension: 'E',
-        dimName: '麦霸控场欲望',
-        text: '连玩三个小时《阿瓦隆》后，你觉得精神焕发、越聊越兴奋，而不是觉得“说太多话了，感到很心累”。'
-    },
-    {
-        id: 10,
+        id: 6,
         dimension: 'E',
         dimName: '麦霸控场欲望',
         text: '你非常渴望抢到“车长”（发牌人）的角色，认为只有自己亲自排兵布阵、挑选车队人选，才能最有效地掌控整局游戏的发展方向。'
     },
     // Dimension 3: Conscientiousness (C) - 无情票型复盘机
     {
-        id: 11,
+        id: 7,
         dimension: 'C',
         dimName: '无情票型复盘机',
         text: '到了第四天复盘时，你脑海里最先浮现并最依赖的是绝对理性的“硬数据”（某天谁投了赞成、谁在车上失败），而非发言状态。'
     },
     {
-        id: 12,
-        dimension: 'C',
-        dimName: '无情票型复盘机',
-        text: '你认为“湖中仙女（验人）”的传递必须严格按照收益最大化的逻辑进行，随意验人或看心情给仙女是不可原谅的乱玩行为。'
-    },
-    {
-        id: 13,
-        dimension: 'C',
-        dimName: '无情票型复盘机',
-        text: '如果你是梅林，你在天亮前就会在心里排练好一套完整的递话和伪装计划，并且在白天严格按计划执行，不易被别人打乱。'
-    },
-    {
-        id: 14,
+        id: 8,
         dimension: 'C',
         dimName: '无情票型复盘机',
         text: '你能清晰且准确地复述出两轮之前，某一个具体车队的五张投票（谁同意谁反对），并在辩论中以此作为核心武器。'
     },
     {
-        id: 15,
+        id: 9,
         dimension: 'C',
         dimName: '无情票型复盘机',
         text: '你极其反感“带情绪的直觉站队”，认为每一个同意或反对的投票都必须有明确的逻辑推导作为支撑，无法容忍“我觉得他是好人所以投他”这种说辞。'
     },
     // Dimension 4: Agreeableness (A) - 傻白甜不忍背刺感
     {
-        id: 16,
+        id: 10,
         dimension: 'A',
         dimName: '傻白甜不忍背刺感',
         text: '为了阵营胜利，当你必须去欺骗或背刺一个现实中关系极好的朋友时，你会感到明显的内疚感，甚至发言时会稍微手下留情。'
     },
     {
-        id: 17,
+        id: 11,
         dimension: 'A',
         dimName: '傻白甜不忍背刺感',
         text: '面对一个发言极其诚恳、声泪俱下向你求票的玩家，即使他的逻辑有小瑕疵，你也会倾向于相信他的“真情流露”。'
     },
     {
-        id: 18,
-        dimension: 'A',
-        dimName: '傻白甜不忍背刺感',
-        text: '即使你心里怀疑某个人是反派，但如果当面指出他会引发非常激烈的冲突，你有时会选择沉默，或用委婉的方式表达。'
-    },
-    {
-        id: 19,
+        id: 12,
         dimension: 'A',
         dimName: '傻白甜不忍背刺感',
         text: '在没有任何信息的第一天，你更倾向于认为大家都是好人（带着善意去听发言），而不是预设满桌都是准备骗你的坏人。'
     },
-    {
-        id: 20,
-        dimension: 'A',
-        dimName: '傻白甜不忍背刺感',
-        text: '在游戏争吵激烈、某位新手玩家被大家集火怀疑并显得十分尴尬时，即使你怀疑他确实是反派，你也会倾向于帮他解围或缓和气氛。'
-    },
     // Dimension 5: Openness (O) - 戏精骚操作脑洞
     {
-        id: 21,
+        id: 13,
         dimension: 'O',
         dimName: '戏精骚操作脑洞',
         text: '作为梅林，为了防备暗杀，你极其倾向于采用反常规打法（如故意投错票、装作暴民、假装派西维尔），在混沌中传递信息。'
     },
     {
-        id: 22,
-        dimension: 'O',
-        dimName: '戏精骚操作脑洞',
-        text: '遇到游戏中新发明的“骚操作”（比如好人悍跳反派来钓鱼执法），你觉得非常刺激并迫不及待想尝试，不反感它打乱逻辑。'
-    },
-    {
-        id: 23,
-        dimension: 'O',
-        dimName: '戏精骚操作脑洞',
-        text: '你经常会凭借第一直觉或某种“玄学”的灵光一闪，投出一张毫无数据支撑但事后证明极其关键的票。'
-    },
-    {
-        id: 24,
+        id: 14,
         dimension: 'O',
         dimName: '戏精骚操作脑洞',
         text: '你不仅分析桌上的发言，还喜欢观察场外因素（如某人拿牌时的微表情、某两人的私下交情）来辅助你的推理。'
     },
     {
-        id: 25,
+        id: 15,
         dimension: 'O',
         dimName: '戏精骚操作脑洞',
         text: '你认为《阿瓦隆》的核心乐趣不在于死板的票型逻辑，而在于人与人之间心理战的博弈。你经常尝试通过“假装自己是神职”或者“假装自己说漏嘴”来主动钓鱼。'
     }
 ];
 
-// Constants for Z-score normalization (Population Norms)
+// Constants for Z-score normalization (Population Norms - Scaled for 15 Questions / 30 Max score per dim)
 const POPULATION_NORMS = {
-    N: { mean: 20, stdDev: 8 },
-    E: { mean: 28, stdDev: 10 },
-    C: { mean: 35, stdDev: 7 },
-    A: { mean: 18, stdDev: 9 },
-    O: { mean: 25, stdDev: 10 }
+    N: { mean: 12.0, stdDev: 4.8 },
+    E: { mean: 16.8, stdDev: 6.0 },
+    C: { mean: 21.0, stdDev: 4.2 },
+    A: { mean: 10.8, stdDev: 5.4 },
+    O: { mean: 15.0, stdDev: 6.0 }
 };
 
-const SIMILARITY_DIVIDER = 12; // Normalization distance scale factor
+// Sigmoid normalization parameters: Similarity = 100 / (1 + exp(k * (dist - theta)))
+const SIMILARITY_K = 0.5;
+const SIMILARITY_THETA = 7.2;
 
 const CHARACTERS = [
     {
@@ -664,8 +606,8 @@ function calculateAndDisplayResults() {
         
         const dist = Math.sqrt(weightedSquaredDiffSum);
         
-        // Convert to compatibility percentage using the normalized scale factor
-        const similarity = Math.max(0, Math.min(100, Math.round(100 * (1 - dist / SIMILARITY_DIVIDER))));
+        // Convert to compatibility percentage using Sigmoid decay function
+        const similarity = Math.max(0, Math.min(100, Math.round(100 / (1 + Math.exp(SIMILARITY_K * (dist - SIMILARITY_THETA))))));
         
         return {
             ...char,
@@ -751,10 +693,10 @@ function renderRadarChart(scores) {
         </defs>
     `;
 
-    // A. Draw Grid Lines (Concentric pentagons representing scores 10, 20, 30, 40, 50)
-    const gridTicks = [10, 20, 30, 40, 50];
+    // A. Draw Grid Lines (Concentric pentagons representing scores 6, 12, 18, 24, 30)
+    const gridTicks = [6, 12, 18, 24, 30];
     gridTicks.forEach(tick => {
-        const radius = (tick / 50) * maxRadius;
+        const radius = (tick / 30) * maxRadius;
         let points = [];
         for (let i = 0; i < dimensions.length; i++) {
             const angle = i * angleStep - Math.PI / 2; // Offset by -90 deg to start top
@@ -803,7 +745,7 @@ function renderRadarChart(scores) {
     for (let i = 0; i < dimensions.length; i++) {
         const dim = dimensions[i];
         const userScore = scores[dim];
-        const radius = (userScore / 50) * maxRadius;
+        const radius = (userScore / 30) * maxRadius;
         const angle = i * angleStep - Math.PI / 2;
         const x = center + radius * Math.cos(angle);
         const y = center + radius * Math.sin(angle);
@@ -816,7 +758,7 @@ function renderRadarChart(scores) {
     for (let i = 0; i < dimensions.length; i++) {
         const dim = dimensions[i];
         const userScore = scores[dim];
-        const radius = (userScore / 50) * maxRadius;
+        const radius = (userScore / 30) * maxRadius;
         const angle = i * angleStep - Math.PI / 2;
         const x = center + radius * Math.cos(angle);
         const y = center + radius * Math.sin(angle);
@@ -836,9 +778,9 @@ function renderDimensionList(scores, primary) {
     
     dimensions.forEach(dim => {
         const score = scores[dim];
-        const textKey = score > 31 ? 'high' : (score >= 19 ? 'med' : 'low');
+        const textKey = score > 18 ? 'high' : (score >= 11 ? 'med' : 'low');
         const descText = DIMENSION_TEXTS[dim][textKey];
-        const percentage = (score / 50) * 100;
+        const percentage = (score / 30) * 100;
         
         // Match archetype blueprint text for this dimension
         const blueprintDesc = primary.blueprint[dim];
@@ -856,7 +798,7 @@ function renderDimensionList(scores, primary) {
         dimItem.innerHTML = `
             <div class="dim-info-header">
                 <span class="dim-name">${DIMENSION_TEXTS[dim].title}</span>
-                <span class="dim-score">${score} / 50分</span>
+                <span class="dim-score">${score} / 30分</span>
             </div>
             <div class="dim-bar-track">
                 <div class="dim-bar-fill" style="width: ${percentage}%"></div>
