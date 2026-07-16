@@ -420,8 +420,83 @@ function switchScreen(fromScreen, toScreen) {
     }, 250);
 }
 
+function setupImageLoaders() {
+    // 1. Welcome logo
+    const welcomeLogo = document.getElementById('welcome-logo-img');
+    const welcomeShield = document.getElementById('welcome-shield-svg');
+    if (welcomeLogo && welcomeShield) {
+        welcomeLogo.onload = () => {
+            welcomeLogo.style.display = 'block';
+            welcomeShield.style.display = 'none';
+        };
+        welcomeLogo.onerror = () => {
+            welcomeLogo.style.display = 'none';
+            welcomeShield.style.display = 'block';
+        };
+        if (welcomeLogo.complete) {
+            if (welcomeLogo.naturalWidth > 0) {
+                welcomeLogo.style.display = 'block';
+                welcomeShield.style.display = 'none';
+            } else {
+                welcomeLogo.style.display = 'none';
+                welcomeShield.style.display = 'block';
+            }
+        }
+    }
+
+    // 2. Poster logo
+    const posterLogo = document.getElementById('poster-logo-img');
+    const posterShield = document.getElementById('poster-shield-svg');
+    if (posterLogo && posterShield) {
+        posterLogo.onload = () => {
+            posterLogo.style.display = 'block';
+            posterShield.style.display = 'none';
+        };
+        posterLogo.onerror = () => {
+            posterLogo.style.display = 'none';
+            posterShield.style.display = 'block';
+        };
+        if (posterLogo.complete) {
+            if (posterLogo.naturalWidth > 0) {
+                posterLogo.style.display = 'block';
+                posterShield.style.display = 'none';
+            } else {
+                posterLogo.style.display = 'none';
+                posterShield.style.display = 'block';
+            }
+        }
+    }
+
+    // 3. Main character image
+    const charImg = DOM.characterImg;
+    const charPlaceholder = document.getElementById('character-placeholder-art');
+    if (charImg && charPlaceholder) {
+        charImg.onload = () => {
+            charImg.style.display = 'block';
+            charPlaceholder.style.display = 'none';
+        };
+        charImg.onerror = () => {
+            charImg.style.display = 'none';
+            charPlaceholder.style.display = 'flex';
+        };
+    }
+
+    // 4. Poster character image
+    const posterCharImg = DOM.posterCharacterImg;
+    if (posterCharImg) {
+        posterCharImg.onload = () => {
+            posterCharImg.style.display = 'block';
+        };
+        posterCharImg.onerror = () => {
+            posterCharImg.style.display = 'none';
+        };
+    }
+}
+
 // Initialize Application
 function init() {
+    setupImageLoaders();
+
     // Event listener for welcome start
     DOM.startBtn.addEventListener('click', () => {
         switchScreen(DOM.welcomeScreen, DOM.quizScreen);
